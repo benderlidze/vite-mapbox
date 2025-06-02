@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import numeral from "numeral";
 import classNames from "classnames";
+import { IconsBlock } from "./IconsBlock";
 
 export const pluralize = (number, word) => {
   return `${number} ${word}${number === 1 ? "" : "s"} `;
@@ -94,6 +95,8 @@ const Card = ({ feature, width = "auto", shortImage = false, onClick }) => {
 
   const { imageUrls } = feature.properties;
 
+  const { project_type, location, population_served } = feature.properties;
+
   return (
     <div className="cursor-pointer" onClick={handleClick}>
       <div
@@ -114,6 +117,13 @@ const Card = ({ feature, width = "auto", shortImage = false, onClick }) => {
           }}
         ></div>
         <PropertyData feature={feature} />
+        <div className=" m-1.5">
+          <IconsBlock
+            project_type={project_type}
+            location={location}
+            population_served={population_served}
+          />
+        </div>
       </div>
     </div>
   );

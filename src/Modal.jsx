@@ -4,6 +4,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { PropertyData } from "./Card";
 import ImageSlider from "./ImageSlider";
+import { IconsBlock } from "./IconsBlock";
 
 const Modal = ({ feature, onClose }) => {
   const [lng, lat] = feature.geometry.coordinates;
@@ -17,10 +18,6 @@ const Modal = ({ feature, onClose }) => {
     village_name,
     imageUrls,
   } = feature.properties;
-
-  const projectTypeText = `Project Type: ${project_type || ""}`;
-  const locationText = `Location: ${location || ""}`;
-  const populationServedText = `Population Served: ${population_served || ""}`;
 
   return (
     <>
@@ -49,21 +46,18 @@ const Modal = ({ feature, onClose }) => {
               </button>
             </div>
             <div className="bg-cover h-80 lg:h-80 ">
-              <ImageSlider images={imageUrls} height="h-80 lg:h-80" />
+              <ImageSlider
+                images={imageUrls}
+                height="h-80 lg:h-80 rounded-t-xl"
+              />
             </div>
             <div className="p-3">
               <PropertyData feature={feature} large />
-              <div className="flex flex-col mb-4">
-                <div className="text-sm text-gray-500 mb-2 sm:mb-0">
-                  {projectTypeText}
-                </div>
-                <div className="text-sm text-gray-500 mb-2 sm:mb-0">
-                  {locationText}
-                </div>
-                <div className="text-sm text-gray-500">
-                  {populationServedText}
-                </div>
-              </div>
+              <IconsBlock
+                project_type={project_type}
+                location={location}
+                population_served={population_served}
+              />
               <p className="mb-6">
                 {description || "No description available."}
               </p>
