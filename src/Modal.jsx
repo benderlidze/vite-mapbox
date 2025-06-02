@@ -46,9 +46,10 @@ const Modal = ({ feature, onClose }) => {
               </button>
             </div>
             <div className="bg-cover h-80 lg:h-80 ">
-              <ImageSlider
-                images={imageUrls}
-                height="h-80 lg:h-80 rounded-t-xl"
+              <img
+                src={imageUrls[0]}
+                alt="Feature"
+                className="w-full h-full object-cover rounded-t-xl"
               />
             </div>
             <div className="p-3">
@@ -61,6 +62,8 @@ const Modal = ({ feature, onClose }) => {
               <p className="mb-6">
                 {description || "No description available."}
               </p>
+
+              <ImageSlider images={imageUrls} height="h-80 lg:h-80" />
             </div>
           </div>
         </div>
