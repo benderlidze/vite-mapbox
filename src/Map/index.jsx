@@ -22,11 +22,28 @@ const Map = ({ data, onLoad, onFeatureClick }) => {
       container: mapContainer.current,
       center: [38, -1],
       zoom: 12,
+      style: "mapbox://styles/mapbox/streets-v12",
     }));
 
     map.addControl(new mapboxgl.NavigationControl());
 
     map.on("load", () => {
+      // set custom background color
+      map.getStyle().layers.forEach((layer) => {
+        if (layer.type === "background") {
+          map.setPaintProperty(layer.id, "background-color", "#e1eff0");
+        }
+        // all land fill layers: land, landuse*, landcover*
+        if (
+          layer.type === "fill" &&
+          (layer.id === "land" ||
+            layer.id.startsWith("landuse") ||
+            layer.id.startsWith("landcover") ||
+            layer.id.toLowerCase().includes("park"))
+        ) {
+          map.setPaintProperty(layer.id, "fill-color", "#e1eff0");
+        }
+      });
       onLoad(map);
       setMapLoaded(true);
     });
