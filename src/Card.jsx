@@ -54,7 +54,7 @@ export const PropertyData = ({ feature, large = false }) => {
     <div className={classNames("py-1.5", xPaddingClass)}>
       <h5
         className={classNames(
-          "mb-1.5  font-bold tracking-tight",
+          "mb-1.5 font-bold tracking-tight text-[#004a76]",
           largerTextClass
         )}
       >
@@ -71,6 +71,11 @@ export const PropertyData = ({ feature, large = false }) => {
       > */}
       {/* <p className="font-medium text-gray-500 ml-1.5">{location}</p> */}
       {/* </div> */}
+      <IconsBlock
+        project_type={project_type}
+        location={location}
+        population_served={population_served}
+      />
     </div>
   );
 };
@@ -117,13 +122,6 @@ const Card = ({ feature, width = "auto", shortImage = false, onClick }) => {
           }}
         ></div>
         <PropertyData feature={feature} />
-        <div className=" m-1.5">
-          <IconsBlock
-            project_type={project_type}
-            location={location}
-            population_served={population_served}
-          />
-        </div>
       </div>
     </div>
   );

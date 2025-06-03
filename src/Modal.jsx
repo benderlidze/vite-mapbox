@@ -22,17 +22,21 @@ const Modal = ({ feature, onClose }) => {
   return (
     <>
       {/* gray out background */}
-      <div className="justify-center items-start flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+      <div
+        className=" justify-center items-start flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+        onClick={onClose}
+      >
         {/* modal outer container */}
         <div
-          className="absolute flex flex-col  "
+          className="absolute flex flex-col mt-12"
           style={{
             width: 550,
             maxWidth: "100%",
           }}
+          onClick={(e) => e.stopPropagation()}
         >
           {/* modal inner container */}
-          <div className="bg-white outline-none focus:outline-none rounded-xl my-12 relative">
+          <div className="bg-white outline-none focus:outline-none rounded-xl relative">
             <div className="absolute top-0 right-0 m-6 z-10">
               <button
                 className="z-150 h-8 w-8 bg-gray-100 hover:bg-gray-200 flex justify-center items-center rounded-md "
