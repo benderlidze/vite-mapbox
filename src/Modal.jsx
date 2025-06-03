@@ -58,11 +58,7 @@ const Modal = ({ feature, onClose }) => {
             </div>
             <div className="p-3">
               <PropertyData feature={feature} large />
-              <IconsBlock
-                project_type={project_type}
-                location={location}
-                population_served={population_served}
-              />
+
               <p className="mb-6">
                 {description || "No description available."}
               </p>

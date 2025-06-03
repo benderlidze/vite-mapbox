@@ -25,7 +25,9 @@ export const getFeatures = async () => {
       const populationServed = data['Population Served'] || '';
       const villageName = data['Village Name'] || '';
       const imageUrls = Array.from({ length: 20 }, (_, i) => data['Image' + (i + 1)])
-
+      const iconProjectType = data['icon project type'] || '';
+      const iconLocation = data['icon location'] || '';
+      const iconPopulationServed = data['icon population served'] || '';
 
       features.push({
         type: 'Feature',
@@ -50,7 +52,11 @@ export const getFeatures = async () => {
           population_served: populationServed,
           village_name: villageName,
           imageUrls: imageUrls.filter(url => url && url.length > 0),
-          
+
+          iconProjectType,
+          iconLocation,
+          iconPopulationServed
+
         },
         geometry: { type: 'Point', coordinates: [lng, lat] }
       })

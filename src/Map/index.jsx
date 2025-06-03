@@ -67,7 +67,12 @@ const Map = ({ data, onLoad, onFeatureClick }) => {
         data &&
         data.map((d, i) => (
           <Marker key={i} feature={d} map={mapRef.current}>
-            <Card feature={d} width={300} shortImage onClick={onFeatureClick} />
+            <Card
+              feature={d}
+              width={"300px"}
+              shortImage
+              onClick={onFeatureClick}
+            />
           </Marker>
         ))}
     </>
@@ -75,7 +80,7 @@ const Map = ({ data, onLoad, onFeatureClick }) => {
 };
 
 Map.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.array,
   onFeatureClick: PropTypes.func,
   onLoad: PropTypes.func,
 };

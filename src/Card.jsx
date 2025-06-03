@@ -26,13 +26,6 @@ const MarkerIcon = () => (
 
 export const PropertyData = ({ feature, large = false }) => {
   const {
-    sale_price,
-    number_of_bedrooms,
-    number_of_bathrooms,
-    total_livable_area,
-  } = feature.properties;
-
-  const {
     project_type,
     location,
     description,
@@ -40,11 +33,6 @@ export const PropertyData = ({ feature, large = false }) => {
     village_name,
     imageUrls,
   } = feature.properties;
-
-  const price = numeral(sale_price).format("0,0");
-  const bedrooms = pluralize(number_of_bedrooms, "bedroom");
-  const bathrooms = pluralize(number_of_bathrooms, "bathroom");
-  const squareFootage = numeral(total_livable_area).format("0,0");
 
   const largerTextClass = large ? "text-2xl" : "text-xl";
   const smallerTextClass = large ? "text-base" : "text-sm";
@@ -72,9 +60,10 @@ export const PropertyData = ({ feature, large = false }) => {
       {/* <p className="font-medium text-gray-500 ml-1.5">{location}</p> */}
       {/* </div> */}
       <IconsBlock
-        project_type={project_type}
-        location={location}
-        population_served={population_served}
+        // project_type={project_type}
+        // location={location}
+        // population_served={population_served}
+        features={feature.properties}
       />
     </div>
   );
