@@ -5,7 +5,6 @@ import classNames from "classnames";
 import { SearchBox } from "@mapbox/search-js-react";
 import mapboxgl from "mapbox-gl";
 import { accessToken } from "./Map";
-import MapboxTooltip from "./MapboxTooltip";
 import { useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMap, faList } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +13,6 @@ import Map from "./Map";
 import Card from "./Card";
 import Modal from "./Modal";
 import { getFeatures } from "./Map/util";
-import housebuyLogo from "./img/housebuy-logo.svg";
 
 import "./styles.css";
 
@@ -71,20 +69,6 @@ export default function Home() {
         <Modal feature={activeFeature} onClose={handleModalClose} />
       )}
       <main className="flex flex-col h-full">
-        {!hideHeaders && (
-          <>
-            <div className="flex shrink-0 justify-center h-16 items-center border-b border-gray-200 ">
-              <div
-                className="bg-contain bg-center bg-no-repeat"
-                style={{
-                  height: 30,
-                  width: 165,
-                  backgroundImage: `url(${housebuyLogo})`,
-                }}
-              ></div>
-            </div>
-          </>
-        )}
         <div className="relative lg:flex grow shrink min-h-0">
           <div
             className={classNames("grow shrink-0 relative h-full lg:h-auto", {
