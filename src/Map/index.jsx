@@ -20,8 +20,8 @@ const Map = ({ data, onLoad, onFeatureClick }) => {
   useEffect(() => {
     const map = (mapRef.current = new mapboxgl.Map({
       container: mapContainer.current,
-      center: [38, -1],
-      zoom: 12,
+      center: { lng: 23.446339999999964, lat: 13.401151207397135 },
+      zoom: 2,
       style: "mapbox://styles/mapbox/streets-v12",
     }));
 
@@ -50,7 +50,7 @@ const Map = ({ data, onLoad, onFeatureClick }) => {
   }, []);
 
   useEffect(() => {
-    console.log("data", data);
+    console.log("mapRef.current", mapRef.current);
     if (mapRef.current && data.length > 0) {
       mapRef.current.fitBounds(
         data.reduce((bounds, feature) => {
