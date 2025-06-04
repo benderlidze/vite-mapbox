@@ -75,7 +75,7 @@ export default function Home() {
               "z-30": activeMobileView === "map",
             })}
           >
-            <div className="absolute top-3 left-3 z-10">
+            {/* <div className="absolute top-3 left-3 z-10">
               <SearchBox
                 className="w-32"
                 options={{
@@ -106,7 +106,7 @@ export default function Home() {
                   },
                 }}
               />
-            </div>
+            </div> */}
             <Map
               data={currentViewData}
               onLoad={handleMapLoad}
@@ -116,7 +116,7 @@ export default function Home() {
           {/* sidebar */}
           <div className="absolute lg:static top-0 p-4 w-full lg:w-96 shadow-xl z-10 overflow-scroll lg:z-30 h-full lg:h-auto bg-white">
             <div className="text-2xl text-black font-semibold w-full mb-1.5">
-              Listings in this Area
+              Villages
             </div>
             <div className="mb-4">
               <div className="font-medium text-gray-500">
