@@ -4,7 +4,8 @@ import { dsvFormat } from 'd3-dsv'
 export const getFeatures = async () => {
 
 
-  const csv = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSg9z-_hkEk2QbB04JlkhFfKb8_ZHwBBpmE1_u4n2w3s3cPlvwCbjFA3uL9d552_pQhLL3UFeR2l-cd/pub?gid=0&single=true&output=csv")
+  //const csv = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSg9z-_hkEk2QbB04JlkhFfKb8_ZHwBBpmE1_u4n2w3s3cPlvwCbjFA3uL9d552_pQhLL3UFeR2l-cd/pub?gid=0&single=true&output=csv")
+  const csv = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSg9z-_hkEk2QbB04JlkhFfKb8_ZHwBBpmE1_u4n2w3s3cPlvwCbjFA3uL9d552_pQhLL3UFeR2l-cd/pub?output=csv")
   const csvText = await csv.text()
 
   const parsedData = dsvFormat(',').parse(csvText);
@@ -19,6 +20,12 @@ export const getFeatures = async () => {
     if (data['Coordinates'] && data['Coordinates'].length > 0) {
 
       const [lng, lat] = data['Coordinates'].split(',').map(Number);
+
+      if (!isValidLatLng(lng, lat)) {
+        console.warn(`Invalid coordinates for feature: ${data['Coordinates']}`);
+        return; // Skip this feature if coordinates are invalid
+      }
+
       const projectType = data['Project Type'] || '';
       const location = data['Location'] || '';
       const description = data['Description'] || '';
@@ -65,16 +72,20 @@ export const getFeatures = async () => {
 
   return features
 
-
-
-
-  // only use the first 60 features in the dataset
-  return listingsGeojson.features
-    .filter((d) => d.properties.sale_price)
-    .slice(0, 60)
-    .map((d, i) => {
-      // assign an image url to the feature's properties
-      d.properties.imageUrl = `./img/demo-real-estate-popup-${i % 4}.png`
-      return d
-    })
 }
+
+// Returns true if lat/lng are valid numbers and within world bounds
+export function isValidLatLng(lng, lat) {
+  return (
+    typeof lng === 'number' &&
+    typeof lat === 'number' &&
+    !isNaN(lng) &&
+    !isNaN(lat) &&
+    lng >= -180 && lng <= 180 &&
+    lat >= -90 && lat <= 90
+  );
+}
+
+
+
+
