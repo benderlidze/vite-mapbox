@@ -63,7 +63,7 @@ const Modal = ({ feature, onClose }) => {
               <PropertyData feature={feature} large />
 
               <p className="mb-6">
-                {description || "No description available."}
+                {description || ""}
               </p>
 
               {imageUrls.length > 0 && (
