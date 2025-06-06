@@ -19,6 +19,8 @@ const Modal = ({ feature, onClose }) => {
     imageUrls,
   } = feature.properties;
 
+  console.log("imageUrls", imageUrls);
+
   return (
     <>
       {/* gray out background */}
@@ -26,7 +28,6 @@ const Modal = ({ feature, onClose }) => {
         className=" justify-center items-start flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
         onClick={onClose}
       >
-        {/* modal outer container */}
         <div
           className="absolute flex flex-col mt-12"
           style={{
@@ -49,13 +50,15 @@ const Modal = ({ feature, onClose }) => {
                 />
               </button>
             </div>
-            <div className="bg-cover h-80 lg:h-80 ">
-              <img
-                src={imageUrls[0]}
-                alt="Feature"
-                className="w-full h-full object-cover rounded-t-xl"
-              />
-            </div>
+            {imageUrls[0] && imageUrls[0].length > 5 && (
+              <div className="bg-cover h-80 lg:h-80 ">
+                <img
+                  src={imageUrls[0]}
+                  alt="Feature"
+                  className="w-full h-full object-cover rounded-t-xl"
+                />
+              </div>
+            )}
             <div className="p-3">
               <PropertyData feature={feature} large />
 
@@ -63,7 +66,9 @@ const Modal = ({ feature, onClose }) => {
                 {description || "No description available."}
               </p>
 
-              <ImageSlider images={imageUrls} height="h-80 lg:h-80" />
+              {imageUrls.length > 0 && (
+                <ImageSlider images={imageUrls} height="h-80 lg:h-80" />
+              )}
             </div>
           </div>
         </div>
