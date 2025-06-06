@@ -4,12 +4,8 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { PropertyData } from "./Card";
 import ImageSlider from "./ImageSlider";
-import { IconsBlock } from "./IconsBlock";
 
 const Modal = ({ feature, onClose }) => {
-  const [lng, lat] = feature.geometry.coordinates;
-  const { imageUrl } = feature.properties;
-
   const {
     project_type,
     location,
@@ -22,14 +18,13 @@ const Modal = ({ feature, onClose }) => {
   console.log("imageUrls", imageUrls);
 
   return (
-    <>
-      {/* gray out background */}
+    <div>
       <div
-        className=" justify-center items-start flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+        className="justify-center p-6 items-start flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
         onClick={onClose}
       >
         <div
-          className="absolute flex flex-col mt-12"
+          className="absolute flex flex-col max-h-[90vh] overflow-y-auto"
           style={{
             width: 550,
             maxWidth: "100%",
@@ -62,9 +57,7 @@ const Modal = ({ feature, onClose }) => {
             <div className="p-3">
               <PropertyData feature={feature} large />
 
-              <p className="mb-6">
-                {description || ""}
-              </p>
+              <p className="mb-6">{description || ""}</p>
 
               {imageUrls.length > 0 && (
                 <ImageSlider images={imageUrls} height="h-80 lg:h-80" />
@@ -74,7 +67,7 @@ const Modal = ({ feature, onClose }) => {
         </div>
       </div>
       <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-    </>
+    </div>
   );
 };
 
