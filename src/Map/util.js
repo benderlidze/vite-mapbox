@@ -1,4 +1,3 @@
-import listingsGeojson from '../data/philadelphia_homes.js'
 import { dsvFormat } from 'd3-dsv'
 
 export const getFeatures = async () => {
@@ -10,8 +9,6 @@ export const getFeatures = async () => {
 
   const parsedData = dsvFormat(',').parse(csvText);
   console.log('parsedData', parsedData);
-
-
 
   const features = []
 
