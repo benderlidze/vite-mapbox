@@ -116,7 +116,7 @@ export default function Home() {
           {/* sidebar */}
           <div className="absolute lg:static top-0 p-4 w-full lg:w-96 shadow-xl z-10 overflow-scroll lg:z-30 h-full lg:h-auto bg-white">
             <div className="text-2xl text-black font-semibold w-full mb-1.5">
-              Villages
+              Recent Villages
             </div>
             <div className="mb-4">
               <div className="font-medium text-gray-500">
