@@ -63,7 +63,7 @@ const Marker = ({ feature, map, children }) => {
     <div>
       <div ref={markerEl}>
         <img
-          src={"icons/map-icon.png"}
+          src={`${import.meta.env.VITE_BASE_URL}icons/map-icon.png`}
           alt="Map Marker"
           style={{ width: 28, height: 35 }}
         />

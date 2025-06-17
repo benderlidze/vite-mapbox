@@ -7,12 +7,14 @@ export const IconsBlock = ({ features }) => {
     iconLocation,
     iconPopulationServed,
   } = features;
-
   const projectTypeText =
     project_type !== "" ? (
       <div className="flex flex-row align-middle items-center text-sm text-gray-500 mb-2 sm:mb-0">
         <img
-          src={iconProjectType || "/vite-mapbox/icons/icon1.webp"}
+          src={
+            iconProjectType ||
+            `${import.meta.env.VITE_BASE_URL}icons/icon1.webp`
+          }
           alt="Project Type Icon"
           className="inline-block mr-1"
           style={{ width: "20px" }}
@@ -25,7 +27,9 @@ export const IconsBlock = ({ features }) => {
     location !== "" ? (
       <div className="flex flex-row align-middle items-center text-sm text-gray-500 mb-2 sm:mb-0">
         <img
-          src={iconLocation || "/vite-mapbox/icons/icon2.webp"}
+          src={
+            iconLocation || `${import.meta.env.VITE_BASE_URL}icons/icon2.webp`
+          }
           alt="Location Icon"
           className="inline-block mr-1"
           style={{ width: "20px" }}
@@ -38,7 +42,10 @@ export const IconsBlock = ({ features }) => {
     population_served !== "" ? (
       <div className="flex flex-row align-middle items-center text-sm text-gray-500">
         <img
-          src={iconPopulationServed || "/vite-mapbox/icons/icon3.webp"}
+          src={
+            iconPopulationServed ||
+            `${import.meta.env.VITE_BASE_URL}icons/icon3.webp`
+          }
           alt="Population Served Icon"
           className="inline-block mr-1"
           style={{ width: "20px" }}

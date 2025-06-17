@@ -25,6 +25,15 @@ const Map = ({ data, onLoad, onFeatureClick }) => {
       style: "mapbox://styles/mapbox/streets-v12",
       cooperativeGestures: true,
       projection: "mercator",
+      transformRequest: (url, resourceType) => {
+        // Ensure proper headers for Safari
+        return {
+          url: url,
+          headers: {
+            "Referrer-Policy": "unsafe-url",
+          },
+        };
+      },
     }));
 
     map.addControl(new mapboxgl.NavigationControl());
